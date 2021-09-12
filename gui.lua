@@ -39,7 +39,11 @@ if game.PlaceId == 6875469709 then
 		if state then
 		    auto = true
 			while auto do
-				for i,v in pairs(game.Workspace.Map.Stages.Boosts[world_number]:GetChildren()) do
+				local children = game.Workspace.Map.Stages.Boosts[world_number]:GetChildren()
+				table.sort(children, function(a, b)
+					return a.Name > b.Name
+				end)
+				for i,v in pairs(children) do
 					if auto then
 						local part1 = v:FindFirstChild("0.5")
 						if part1 then
